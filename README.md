@@ -55,7 +55,7 @@ Key highlights:
 ## Project Structure
 
 ```
-SSX361_Fourtitude_Milestone2_Final/
+Student_Management_System/
 ├── design.py                        # UI colors, fonts, titles
 ├── BCLOGO.png                       # Main logo
 ├── main.py                          # Entry point & main GUI
