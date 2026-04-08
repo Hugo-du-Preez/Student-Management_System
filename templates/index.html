@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="text-center">
+    <img src="{{ url_for('static', filename='images/BCLOGO.png') }}" alt="Logo" class="img-fluid mb-4" style="max-width: 380px;">
+    <h1 class="mb-4">Student Management System</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <a href="/create_db" class="btn btn-warning w-100 mb-3">Create/Reset Database</a>
+            <div class="row">
+                <div class="col">
+                    <a href="/students" class="btn btn-primary w-100 mb-3">Manage Students</a>
+                </div>
+                <div class="col">
+                    <a href="/lecturers" class="btn btn-primary w-100 mb-3">Manage Lecturers</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

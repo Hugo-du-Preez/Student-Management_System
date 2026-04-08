@@ -1,252 +1,170 @@
-[![Python](https://img.shields.io/badge/python-3.x-blue.svg)](https://www.python.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Tkinter](https://img.shields.io/badge/GUI-Tkinter-green.svg)](https://docs.python.org/3/library/tkinter.html)
+[![Python](https://img.shields.io/badge/Python-3.8+-blue)](https://www.python.org/)
+[![Flask](https://img.shields.io/badge/Flask-3.0-green)](https://flask.palletsprojects.com/)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-purple)](https://getbootstrap.com/)
+[![License](https://img.shields.io/badge/License-MIT-brightgreen)](LICENSE)
+[![SQLite](https://img.shields.io/badge/Database-SQLite-grey)](https://sqlite.org/)
 
-<div align="center">
-  <img src="images/BCLOGO.png" alt="Student Management System Logo" width="380"/>
-  <h1>Student Management System (SMS)</h1>
-  <p><strong>A cross-platform Tkinter GUI application for managing student and lecturer records using SQLite.</strong></p>
-  <p>Built for SSX361 Student Management System Project by <strong>Hugo du Preez</strong></p>
-</div>
+# Student Management System (SMS) - Flask Web App
 
-## Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [Quick Start](#quick-start)
-- [Project Structure](#project-structure)
-- [Database Schema](#database-schema)
-- [Usage](#usage)
-- [Screenshots](#screenshots)
-- [Styling](#styling)
-- [Development](#development)
-- [Troubleshooting](#troubleshooting)
-- [License](#license)
-- [Authors](#authors)
+Production-ready Flask application with full CRUD operations for students and lecturers using SQLite database and Bootstrap responsive UI.
 
-## Overview
+**Originally Tkinter desktop app converted to professional web application for SSX361 project.**
 
-The Student Management System (SMS) is a fully-featured, zero-dependency Python application using Tkinter for GUI and SQLite3 for persistence. It provides complete CRUD functionality for managing students and lecturers in an educational context.
+## 🚀 Quick Start
 
-Key highlights:
-- Modular architecture with separate CRUD and Windows modules
-- Custom dark blue theme
-- Auto-generates DB with sample data
-- Cross-platform (Windows/Linux/macOS with Python)
+```bash
+git clone <repo> && cd Student_Management_System
+pip install -r requirements.txt
+python app.py
+```
+Open `http://localhost:5000`
 
-## Features
+## ☁️ PythonAnywhere Deployment
 
-- **Student Management**
-  - Add new students with name and student number
-  - View all students
-  - Update student information
-  - Delete student records
+1. Upload all files to PythonAnywhere
+2. Virtualenv: `pip install flask pillow`
+3. WSGI config:
+```python
+import sys
+path = '/home/USERNAME/mysite'
+if path not in sys.path:
+    sys.path.append(path)
+from app import app as application
+```
+4. Reload web app
 
-- **Lecturer Management**
-  - Add new lecturers
-  - View all lecturers
-  - Update lecturer information
-  - Delete lecturer records
-
-- **Database Operations**
-  - Create and initialize database tables
-  - SQLite-based persistent storage
-  - Data validation
-
-## Project Structure
+## 📁 Project Structure
 
 ```
 Student_Management_System/
-├── design.py                        # UI colors, fonts, titles
-├── BCLOGO.png                       # Main logo
-├── main.py                          # Entry point & main GUI
-├── README.md                        # Documentation
-├── SMS.db                           # SQLite DB (gitignored in prod)
-├── Spacing.png                      # UI spacer
-├── Spacing1.png                     # UI spacer
-├── .gitignore                       # Git ignore file
-├── CRUD/                            # DB CRUD modules
-│   ├── __init__.py
-│   ├── Create.py
-│   ├── Delete.py
-│   ├── Read.py
-│   └── Update.py
-├── images/                          # Assets (BCLOGO.png used in main.py)
-└── Windows/                         # Tkinter GUI windows
-    ├── __init__.py
-    ├── DisplayAllLecturers.py
-    ├── DisplayAllStudents.py
-    ├── InsertLecturer.py
-    ├── InsertLecturer2.py
-    ├── InsertStudent.py
-    ├── InsertStudent2.py
-    ├── UpdateLecturerWindow.py
-    └── UpdateStudentWindow.py
+├── app.py                 # Flask application and routes
+├── requirements.txt       # Dependencies: flask, pillow
+├── .gitignore            # Git exclusions
+├── LICENSE               # MIT License
+├── README.md             # This documentation
+├── static/
+│   ├── css/style.css     # Custom dark blue glassmorphism theme
+│   └── images/           # BCLOGO.png
+├── templates/            # Jinja2 + Bootstrap templates
+│   ├── base.html         # Master layout with navbar
+│   ├── index.html        # Dashboard
+│   ├── students.html     # Students management
+│   └── lecturers.html    # Lecturers management
+└── CRUD/                 # Database operations
+    ├── Create.py         # Database creation and sample data
+    ├── Read.py           # Fetch students/lecturers
+    ├── Delete.py         # Delete operations
+    └── Update.py         # Update operations (ready for extension)
 ```
 
+## 🌐 Routes
 
-## Quick Start 💨
+| Route | Method | Action |
+|-------|--------|--------|
+| `/` | GET | Home dashboard |
+| `/students` | GET/POST | List and add students |
+| `/lecturers` | GET/POST | List and add lecturers |
+| `/create_db` | GET | Reset database |
+| `/delete_student/<id>` | GET | Delete student |
+| `/delete_lecturer/<id>` | GET | Delete lecturer |
+| `/add_student` | POST | Create student |
+| `/add_lecturer` | POST | Create lecturer |
 
-### Prerequisites
-- Python 3.7+
+## 🗄️ Database Schema
 
-### Run in 1 command
+```
+tblStudents:
+- id INTEGER PRIMARY KEY AUTOINCREMENT
+- fname TEXT
+- lname TEXT  
+- snumber TEXT
+
+tblLecturers:
+- empid INTEGER PRIMARY KEY AUTOINCREMENT
+- fname TEXT
+- lname TEXT
+- course TEXT
+```
+
+Sample data auto-loaded on `/create_db`.
+
+## 🎨 Styling System
+
+Dark blue theme matching original desktop app:
+
+```
+Primary: #002855
+Secondary: #335C81
+Accent: #005780 (hover)
+Dark: #001a33
+```
+
+Features:
+- Glassmorphism effects
+- Smooth hover animations
+- Responsive navbar with logo
+- Mobile-first design
+
+## 📦 Requirements
+
+```txt
+flask==3.0.0
+pillow==11.0.0
+```
+
+## 🧪 Testing & Development
+
 ```bash
-python main.py
+# Virtual environment (recommended)
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# venv\Scripts\activate   # Windows
+
+pip install -r requirements.txt
+FLASK_ENV=development flask run --host=0.0.0.0
+
+# Database inspection
+sqlite3 SMS.db \".schema\"
+sqlite3 SMS.db \"SELECT * FROM tblStudents;\"
 ```
 
-**Requires: pip install -r requirements.txt (pillow for images)**
-
-## Requirements
-- Python 3.7+
-- pip install pillow (or -r requirements.txt)
-
-## Installation
-
-1. Clone or download the project files
-2. Ensure you have Python 3.x installed
-3. pip install -r requirements.txt
-
-## Usage
-
-### Running the Application
-
-```bash
-python main.py
-```
-
-This will launch the Student Management System GUI window.
-
-### Main Window
-
-The main window (400x680) displays:
-- BCLOGO.png logo
-- Navigation buttons for all CRUD operations:
-  - **Create Database**: Initialize/reset the database with default data
-  - **New Lecturer**: Add a new lecturer
-  - **New Student**: Add a new student
-  - **Read All Lecturers**: Display all lecturers in a list
-  - **Read All Students**: Display all students in a list
-  - **Update Student**: Modify existing student records
-  - **Update Lecturer**: Modify existing lecturer records
-  - **Delete Student**: Remove a student (via listbox selection)
-  - **Delete Lecturer**: Remove a lecturer (via listbox selection)
-  - **Exit**: Close the application
-
-## Database Schema 🗄️
-
-**SMS.db** (auto-created, .gitignore recommended)
-
-### Tables
-
-| `tblStudents` | `id` (INT), `fname` (TEXT), `lname` (TEXT), `snumber` (INTEGER) | `id` | Hugo du Preez (600987), John Doe (000000) |\n| `tblLecturers` | `empid` (INTEGER), `fname` (TEXT), `lname` (TEXT), `course` (TEXT) | `empid` | Wilma Flintstone (PRG262), Barney Rubbles (STA161), Fred Flintstone (PRG161), Betty Rubble (SSX361) |
-
-### ERD (ASCII)
-```
-+---------------+       +-----------------+
-| tblStudents   |       | tblLecturers    |
-|---------------|       |-----------------|
-| id (PK)       |       | empid (PK)      |
-| fname         |       | fname           |
-| lname         |       | lname           |
-| snumber       |       | course          |
-+---------------+       +-----------------+
-```
-
-**Note**: "Create Database" button drops/recreates tables with defaults.
-
-## Screenshots 📸
-
-**Main Window**
-![Main GUI](images/BCLOGO.png)
-
-**Display Students** (example output)
-```
-=======================================
-Students in database:
-
-ID|First Name|Last Name|Student Number
-=======================================
-1 | Hugo | du Preez | 600987
-2 | John | Doe | 000000
-=======================================
-```
-
-## Features Detail
-
-### Create ➕
-- Initialize/reset DB with defaults
-- Clears tables to avoid duplicates
-
-### Read 👁️
-- Formatted listbox/Text displays
-- Separate windows for students/lecturers
-
-### Update ✏️
-- Edit all fields by ID
-- Direct SQL updates
-
-### Delete 🗑️
-- Listbox selection + confirmation
-
-## Styling
-
-The application uses a custom color scheme defined in `design.py`:
-- Primary color: `#002855` (Dark Blue)
-- Secondary color: `#335C81` (Medium Blue)
-- Text color: White
-- Button hover color: `#005780` (Lighter Blue)
-
-## License 📄
-
-MIT License - see [LICENSE](LICENSE) 
-
-## Authors 👥
-
-**Hugo du Preez**
-- SSX361 Student Management System Project 
-
-## Acknowledgments 🙏
-
-- Python, Tkinter, SQLite3 standard library
-- Original project structure
-
-## Development 🛠️
-
-### Running in Dev
-```bash
-# Run app
-python main.py
-
-# View DB
-sqlite3 SMS.db ".schema"
-sqlite3 SMS.db "SELECT * FROM tblStudents;"
-```
-
-### Customization
-- Edit `design.py` for colors/fonts
-- Modify CRUD/*.py for business logic
-- Add windows in Windows/
-
-### Contributing
-1. Fork & clone
-2. Create feature branch
-3. Commit changes
-4. Test thoroughly
-5. PR to main
-
-## Troubleshooting 🔧
+## 🔧 Common Issues
 
 | Issue | Solution |
 |-------|----------|
-| No tkinter | `sudo apt install python3-tk` (Linux) or reinstall Python |
-| DB not created | Run "Create Database" button |
-| Pillow import error | pip install pillow |&#10;| Image not loading | Check PNG paths relative to main.py |
-| Windows buttons not working | Verify imports in main.py |
+| No module named 'flask' | `pip install -r requirements.txt` |
+| Static files 404 | Check `static/images/BCLOGO.png` exists |
+| Database empty | Visit `/create_db` |
+| Forms not submitting | Check browser console |
+| PythonAnywhere 500 | Check error log + WSGI path |
 
-## Styling 🎨
+## 📈 Roadmap
 
-Custom scheme in `design.py`:
-- Primary: `#002855` (Dark Blue)
-- Secondary: `#335C81`
-- Hover: `#005780`
-- Text: White
+- [x] Complete CRUD
+- [x] Responsive UI
+- [x] Production deployment  
+- [ ] Authentication
+- [ ] Update forms
+- [ ] Search & pagination
+- [ ] CSV export
+- [ ] Docker container
+
+## 🤝 Contributing
+
+1. Fork the project
+2. Create feature branch (`git checkout -b feature/YourFeature`)
+3. Commit changes (`git commit -m 'Add YourFeature'`)
+4. Push (`git push origin feature/YourFeature`)
+5. Open Pull Request
+
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE)
+
+## 👨‍💻 Author
+
+**Hugo du Preez**  
+SSX361 Student Management System Project 2024
+
+---
+⭐ Star if you found this helpful!

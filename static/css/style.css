@@ -1,0 +1,99 @@
+:root {
+    --primary: #002855;
+    --secondary: #335C81;
+    --accent: #005780;
+    --dark: #001a33;
+}
+
+body.bg-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+}
+
+.navbar {
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.navbar-brand img {
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.nav-link {
+    position: relative;
+    transition: all 0.3s ease;
+    color: white !important;
+}
+
+.nav-link:hover {
+    color: var(--accent) !important;
+    background: rgba(255,255,255,0.1);
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    transform: translateY(-2px);
+}
+
+.btn-warning {
+    background: #ffc107;
+    border-color: #ffc107;
+    transition: all 0.3s;
+}
+
+.btn-warning:hover {
+    background: #e0a800;
+    border-color: #d39e00;
+    transform: translateY(-1px);
+}
+
+.container {
+    min-height: calc(100vh - 200px);
+}
+
+.alert {
+    background: rgba(255,255,255,0.95);
+    color: var(--dark);
+    border-left: 5px solid var(--accent);
+    backdrop-filter: blur(10px);
+}
+
+.table-dark th {
+    background: var(--dark);
+    color: white;
+    border-color: var(--accent);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    --bs-table-accent-bg: rgba(255,255,255,0.05);
+}
+
+.form-control {
+    background: rgba(255,255,255,0.95);
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 12px;
+    color: var(--dark);
+    transition: all 0.3s;
+}
+
+.form-control:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.25rem rgba(0, 87, 128, 0.2);
+    background: white;
+}
+
+.btn {
+    border-radius: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+}

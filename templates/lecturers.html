@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Lecturers - SMS{% endblock %}
+{% block content %}
+<div>
+    <h2>Lecturers</h2>
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <form method="POST" action="/add_lecturer" class="row g-3">
+                <div class="col-md-3">
+                    <input type="text" class="form-control" name="fname" placeholder="First Name" required>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" name="lname" placeholder="Last Name" required>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" name="course" placeholder="Course" required>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-success">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-dark table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>EmpID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Course</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for lecturer in lecturers %}
+                <tr>
+                    <td>{{ lecturer[0] }}</td>
+                    <td>{{ lecturer[1] }}</td>
+                    <td>{{ lecturer[2] }}</td>
+                    <td>{{ lecturer[3] }}</td>
+                    <td>
+                        <a href="/delete_lecturer/{{ lecturer[0] }}" class="btn btn-danger btn-sm" onclick="return confirm('Delete?')">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
