@@ -236,7 +236,7 @@ MIT License - see [LICENSE](LICENSE)
 ## 👨‍💻 Author & Credits
 
 **Hugo du Preez**  
-*SSX361 Student Management System Project - 2024*
+*SSX361 Student Management System Project*
 
 **Tech Stack**:
 - Flask 3.0 (Backend)
