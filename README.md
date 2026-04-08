@@ -63,14 +63,14 @@ Student_Management_System/
 ├── SMS.db                           # SQLite DB (gitignored in prod)
 ├── Spacing.png                      # UI spacer
 ├── Spacing1.png                     # UI spacer
-├── TODO.md                          # Implementation tracker
+├── .gitignore                       # Git ignore file
 ├── CRUD/                            # DB CRUD modules
 │   ├── __init__.py
 │   ├── Create.py
 │   ├── Delete.py
 │   ├── Read.py
 │   └── Update.py
-├── images/                          # Legacy assets
+├── images/                          # Assets (BCLOGO.png used in main.py)
 └── Windows/                         # Tkinter GUI windows
     ├── __init__.py
     ├── DisplayAllLecturers.py
@@ -94,17 +94,17 @@ Student_Management_System/
 python main.py
 ```
 
-**Zero installation needed** - Uses only standard library (tkinter, sqlite3)!
+**Requires: pip install -r requirements.txt (pillow for images)**
 
 ## Requirements
 - Python 3.7+
-- No pip installs required
+- pip install pillow (or -r requirements.txt)
 
 ## Installation
 
 1. Clone or download the project files
 2. Ensure you have Python 3.x installed
-3. No additional packages required (all dependencies are in the Python standard library)
+3. pip install -r requirements.txt
 
 ## Usage
 
@@ -138,10 +138,7 @@ The main window (400x680) displays:
 
 ### Tables
 
-| Table | Fields | PK | Sample Data |
-|-------|--------|----|-------------|
-| `tblStudents` | `id` (INT), `fname` (TEXT), `lname` (TEXT), `snumber` (TEXT) | `id` | Hugo du Preez (600987), John Doe (000000) |
-| `tblLecturers` | `empid` (TEXT), `fname` (TEXT), `lname` (TEXT), `course` (TEXT) | `empid` | Wilma Flintstone (PRG262), Barney Rubbles (STA161), Fred Flintstone (PRG161), Betty Rubble (SSX361) |
+| `tblStudents` | `id` (INT), `fname` (TEXT), `lname` (TEXT), `snumber` (INTEGER) | `id` | Hugo du Preez (600987), John Doe (000000) |\n| `tblLecturers` | `empid` (INTEGER), `fname` (TEXT), `lname` (TEXT), `course` (TEXT) | `empid` | Wilma Flintstone (PRG262), Barney Rubbles (STA161), Fred Flintstone (PRG161), Betty Rubble (SSX361) |
 
 ### ERD (ASCII)
 ```
@@ -243,7 +240,7 @@ sqlite3 SMS.db "SELECT * FROM tblStudents;"
 |-------|----------|
 | No tkinter | `sudo apt install python3-tk` (Linux) or reinstall Python |
 | DB not created | Run "Create Database" button |
-| Image not loading | Check PNG paths relative to main.py |
+| Pillow import error | pip install pillow |&#10;| Image not loading | Check PNG paths relative to main.py |
 | Windows buttons not working | Verify imports in main.py |
 
 ## Styling 🎨
